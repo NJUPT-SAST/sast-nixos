@@ -36,8 +36,6 @@
             };
 
             treefmt = (import ./treefmt.nix);
-
-            formatter = pkgs.nixfmt-rfc-style;
           };
       }
     );
