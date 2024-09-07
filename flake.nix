@@ -17,7 +17,8 @@
         imports = [
           inputs.treefmt-nix.flakeModule
 
-          ./modules/nixos.nix
+          ./modules/flake-module.nix
+          ./nixos.nix
         ];
 
         perSystem =
@@ -49,8 +50,8 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
     srvos.url = "github:numtide/srvos";
     srvos.inputs.nixpkgs.follows = "nixpkgs";

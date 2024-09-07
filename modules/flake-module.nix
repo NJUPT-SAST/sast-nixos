@@ -5,7 +5,12 @@
     default.imports = [
       inputs.srvos.nixosModules.server
       inputs.srvos.nixosModules.mixins-trusted-nix-caches
-      ./pkgs.nix
+      ./machine/pkgs.nix
+    ];
+
+    installer.imports = [
+      inputs.srvos.nixosModules.server
+      inputs.srvos.nixosModules.mixins-trusted-nix-caches
     ];
   };
 }
