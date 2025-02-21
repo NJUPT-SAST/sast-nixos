@@ -11,13 +11,13 @@
     nixpkgs,
     nixos-generators,
     ...
-  }: {
+  }: let
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  in {
     ## NOTE: from https://github.com/nix-community/nixos-generators/issues/128#issuecomment-1484084499
     packages."x86_64-linux" = {
       nixovabase = let
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         unfixed = nixos-generators.nixosGenerate {
-          pkgs = pkgs;
           modules = [./bootstrap.nix];
           format = "virtualbox";
         };
@@ -36,6 +36,11 @@
           ${nixpkgs.legacyPackages.x86_64-linux.ovftool}/bin/ovftool --lax --sourceType=OVF --targetType=OVA nixos.ovf $out/nixos.ova
           # tar cf $out/nixos.ova *.ovf *.mf *.vmdk
         '';
+    };
+    devShells."x86_64-linux".default = pkgs.mkShell {
+      packages = with pkgs; [
+        just
+      ];
     };
 
     ## Service Machine Start

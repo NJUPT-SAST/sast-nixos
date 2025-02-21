@@ -6,7 +6,10 @@
 
 ## Usage:
 
-- Prerequests: `nix` and `just`
+- Prerequests:
+  - current only support x86_64-linux build host
+  - `nix` and `just` from your own package manager
+    or `nix` with `nix develop` to get `just`
 - use `just bootstrap` to get nixos ova image(`result/nixos.ova`)
 - use `just remote-switch .#machine_name machine_user@machine_ip`
   to update/switch nixos configuration
